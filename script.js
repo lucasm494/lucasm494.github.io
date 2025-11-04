@@ -5,8 +5,19 @@ const filterButtons = document.querySelectorAll('.filter-btn');
 
 // Load shirts from JSON
 async function loadShirts() {
-    const response = await fetch('shirts.json');
-    return await response.json();
+    try {
+        const response = await fetch('shirts.json');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        return await response.json();
+    } catch (error) {
+        console.error('Failed to load shirts:', error);
+        // Fallback to empty array
+        return [];
+    }
 }
 
 // Render shirts to page
