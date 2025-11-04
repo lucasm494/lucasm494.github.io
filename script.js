@@ -1,91 +1,67 @@
-// DOM elements
+// Get DOM elements
 const shirtsContainer = document.getElementById('shirts-container');
 const searchInput = document.getElementById('search');
 const filterButtons = document.querySelectorAll('.filter-btn');
 
-// Load shirts from JSON file (our API)
+// Load shirts from JSON
 async function loadShirts() {
-    try {
-        const response = await fetch('shirts.json');
-        if (!response.ok) throw new Error('Failed to load shirts data');
-        return await response.json();
-    } catch (error) {
-        console.error('Error loading shirts:', error);
-        return [];
-    }
+    const response = await fetch('shirts.json');
+    return await response.json();
 }
 
-// Initialize
-async function init() {
-    const shirts = await loadShirts();
-    renderShirts(shirts);
-    setupEventListeners(shirts);
-}
-
-// Render shirts
-function renderShirts(shirtsToRender) {
-    shirtsContainer.innerHTML = '';
-    
-    if (shirtsToRender.length === 0) {
-        shirtsContainer.innerHTML = '<div class="loading">No shirts found in collection</div>';
-        return;
-    }
-    
-    shirtsToRender.forEach(shirt => {
-        const card = document.createElement('div');
-        card.className = 'shirt-card';
-        card.innerHTML = `
+// Render shirts to page
+function renderShirts(shirts) {
+    shirtsContainer.innerHTML = shirts.map(shirt => `
+        <div class="shirt-card">
             <div class="shirt-image">
-                <img src="shirts/${shirt.image}" alt="${shirt.team} ${shirt.season}" 
-                     onerror="this.src='https://via.placeholder.com/150x200/FFFFFF/333333?text=${shirt.team.replace(' ', '+')}'">
+                <img src="shirts/${shirt.image}" alt="${shirt.team}">
             </div>
             <h3>${shirt.team}</h3>
-            <p>${shirt.season} Season</p>
+            <p>${shirt.season}</p>
             <div class="color-info">
-                <div class="color-dot" style="background-color: ${shirt.mainColor}" title="Main Color"></div>
-                <div class="color-dot" style="background-color: ${shirt.secondaryColor}" title="Secondary Color"></div>
+                <div class="color-dot" style="background: ${shirt.mainColor}"></div>
+                <div class="color-dot" style="background: ${shirt.secondaryColor}"></div>
             </div>
-            <p><small>${shirt.league.toUpperCase()}</small></p>
-        `;
-        shirtsContainer.appendChild(card);
+        </div>
+    `).join('');
+}
+
+// Filter shirts based on search and active filter
+function filterShirts(shirts, searchTerm, activeFilter) {
+    return shirts.filter(shirt => {
+        const matchesSearch = !searchTerm || 
+            shirt.team.toLowerCase().includes(searchTerm) || 
+            shirt.season.toLowerCase().includes(searchTerm);
+        
+        const matchesFilter = activeFilter === 'all' || shirt.league === activeFilter;
+        
+        return matchesSearch && matchesFilter;
     });
 }
 
 // Setup event listeners
-function setupEventListeners(shirts) {
+function setupEvents(shirts) {
     // Filter buttons
     filterButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', () => {
             filterButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
+            btn.classList.add('active');
             
-            const filter = this.dataset.filter;
-            const filtered = filter === 'all' ? shirts : shirts.filter(s => s.league === filter);
+            const filtered = filterShirts(shirts, searchInput.value, btn.dataset.filter);
             renderShirts(filtered);
         });
     });
     
-    // Search
-    searchInput.addEventListener('input', function() {
-        const term = this.value.toLowerCase();
+    // Search input
+    searchInput.addEventListener('input', () => {
         const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
-        
-        let filtered = shirts;
-        
-        if (activeFilter !== 'all') {
-            filtered = filtered.filter(s => s.league === activeFilter);
-        }
-        
-        if (term) {
-            filtered = filtered.filter(s => 
-                s.team.toLowerCase().includes(term) || 
-                s.season.toLowerCase().includes(term)
-            );
-        }
-        
+        const filtered = filterShirts(shirts, searchInput.value.toLowerCase(), activeFilter);
         renderShirts(filtered);
     });
 }
 
 // Start the app
-document.addEventListener('DOMContentLoaded', init);
+loadShirts().then(shirts => {
+    renderShirts(shirts);
+    setupEvents(shirts);
+});
