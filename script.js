@@ -6,7 +6,7 @@ const filterButtons = document.querySelectorAll('.filter-btn');
 // Load shirts from JSON
 async function loadShirts() {
     try {
-        const response = await fetch('shirts.json');
+        const response = await fetch('/lucasm494.github.io/shirts.json');
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
