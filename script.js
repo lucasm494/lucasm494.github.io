@@ -35,7 +35,7 @@ async function fetchGitHubRepos() {
     
     try {
         // Replace 'your-username' with an actual GitHub username
-        const response = await fetch('https://api.github.com/users/octocat/repos?sort=updated&per_page=6');
+        const response = await fetch('https://api.github.com/users/lucasm494/repos?sort=updated&per_page=6');
         
         if (!response.ok) {
             throw new Error('Failed to fetch repositories');
