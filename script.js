@@ -1,116 +1,91 @@
-// Dynamic Interaction: Form submission handler
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(this);
-    const name = formData.get('name') || this.querySelector('input[type="text"]').value;
-    const email = formData.get('email') || this.querySelector('input[type="email"]').value;
-    const message = formData.get('message') || this.querySelector('textarea').value;
-    
-    // Simple validation
-    if (name && email && message) {
-        alert(`Thank you, ${name}! Your message has been sent.`);
-        this.reset();
-    } else {
-        alert('Please fill in all fields.');
-    }
-});
+// DOM elements
+const shirtsContainer = document.getElementById('shirts-container');
+const searchInput = document.getElementById('search');
+const filterButtons = document.querySelectorAll('.filter-btn');
 
-// Dynamic Interaction: Learn More button
-document.getElementById('learnMoreBtn').addEventListener('click', function() {
-    const aboutSection = document.getElementById('about');
-    aboutSection.scrollIntoView({ behavior: 'smooth' });
-    
-    // Add visual feedback
-    this.style.backgroundColor = '#2980b9';
-    setTimeout(() => {
-        this.style.backgroundColor = '#3498db';
-    }, 300);
-});
-
-// Content from Public API: Fetch GitHub repositories
-async function fetchGitHubRepos() {
-    const projectsContainer = document.getElementById('projectsContainer');
-    
+// Load shirts from JSON file (our API)
+async function loadShirts() {
     try {
-        // Replace 'your-username' with an actual GitHub username
-        const response = await fetch('https://api.github.com/users/lucasm494/repos?sort=updated&per_page=6');
+        const response = await fetch('shirts.json');
+        if (!response.ok) throw new Error('Failed to load shirts data');
+        return await response.json();
+    } catch (error) {
+        console.error('Error loading shirts:', error);
+        return [];
+    }
+}
+
+// Initialize
+async function init() {
+    const shirts = await loadShirts();
+    renderShirts(shirts);
+    setupEventListeners(shirts);
+}
+
+// Render shirts
+function renderShirts(shirtsToRender) {
+    shirtsContainer.innerHTML = '';
+    
+    if (shirtsToRender.length === 0) {
+        shirtsContainer.innerHTML = '<div class="loading">No shirts found in collection</div>';
+        return;
+    }
+    
+    shirtsToRender.forEach(shirt => {
+        const card = document.createElement('div');
+        card.className = 'shirt-card';
+        card.innerHTML = `
+            <div class="shirt-image">
+                <img src="shirts/${shirt.image}" alt="${shirt.team} ${shirt.season}" 
+                     onerror="this.src='https://via.placeholder.com/150x200/FFFFFF/333333?text=${shirt.team.replace(' ', '+')}'">
+            </div>
+            <h3>${shirt.team}</h3>
+            <p>${shirt.season} Season</p>
+            <div class="color-info">
+                <div class="color-dot" style="background-color: ${shirt.mainColor}" title="Main Color"></div>
+                <div class="color-dot" style="background-color: ${shirt.secondaryColor}" title="Secondary Color"></div>
+            </div>
+            <p><small>${shirt.league.toUpperCase()}</small></p>
+        `;
+        shirtsContainer.appendChild(card);
+    });
+}
+
+// Setup event listeners
+function setupEventListeners(shirts) {
+    // Filter buttons
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.dataset.filter;
+            const filtered = filter === 'all' ? shirts : shirts.filter(s => s.league === filter);
+            renderShirts(filtered);
+        });
+    });
+    
+    // Search
+    searchInput.addEventListener('input', function() {
+        const term = this.value.toLowerCase();
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
         
-        if (!response.ok) {
-            throw new Error('Failed to fetch repositories');
+        let filtered = shirts;
+        
+        if (activeFilter !== 'all') {
+            filtered = filtered.filter(s => s.league === activeFilter);
         }
         
-        const repos = await response.json();
+        if (term) {
+            filtered = filtered.filter(s => 
+                s.team.toLowerCase().includes(term) || 
+                s.season.toLowerCase().includes(term)
+            );
+        }
         
-        // Clear loading message
-        projectsContainer.innerHTML = '';
-        
-        // Create project cards
-        repos.forEach(repo => {
-            const projectCard = document.createElement('div');
-            projectCard.className = 'project-card';
-            projectCard.innerHTML = `
-                <h3>${repo.name}</h3>
-                <p>${repo.description || 'No description available'}</p>
-                <div style="margin-top: 1rem;">
-                    <a href="${repo.html_url}" target="_blank" style="color: #3498db; text-decoration: none;">
-                        View on GitHub →
-                    </a>
-                </div>
-            `;
-            projectsContainer.appendChild(projectCard);
-        });
-        
-    } catch (error) {
-        console.error('Error fetching GitHub repos:', error);
-        projectsContainer.innerHTML = `
-            <div style="text-align: center; color: #666;">
-                <p>Unable to load projects. Showing sample projects instead.</p>
-                ${getSampleProjects()}
-            </div>
-        `;
-    }
+        renderShirts(filtered);
+    });
 }
 
-// Fallback sample projects if API fails
-function getSampleProjects() {
-    const sampleProjects = [
-        { name: 'Portfolio Website', description: 'A responsive portfolio website built with HTML, CSS, and JavaScript', url: '#' },
-        { name: 'Task Manager', description: 'A simple task management application with local storage', url: '#' },
-        { name: 'Weather App', description: 'Real-time weather application using public API', url: '#' }
-    ];
-    
-    return sampleProjects.map(project => `
-        <div class="project-card">
-            <h3>${project.name}</h3>
-            <p>${project.description}</p>
-            <div style="margin-top: 1rem;">
-                <a href="${project.url}" style="color: #3498db; text-decoration: none;">
-                    View Project →
-                </a>
-            </div>
-        </div>
-    `).join('');
-}
-
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Fetch GitHub repositories
-    fetchGitHubRepos();
-    
-    // Add scroll animation for skill bars
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animationPlayState = 'running';
-            }
-        });
-    });
-    
-    // Observe skill bars
-    document.querySelectorAll('.bar').forEach(bar => {
-        bar.style.animationPlayState = 'paused';
-        observer.observe(bar);
-    });
-});
+// Start the app
+document.addEventListener('DOMContentLoaded', init);
