@@ -1,17 +1,87 @@
-<html>
-    <head>
-        <title>WEBSITE</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <input type="checkbox" id="burger">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Marques Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Lucas Marques</h1>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <label for="burger">☰</label>
-        <nav>
-            <a href="home.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </body>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to My Portfolio</h1>
+            <p class="hero-subtitle">Web Developer & Designer</p>
+            <button class="cta-button" id="learnMoreBtn">Learn More</button>
+        </div>
+        <div class="hero-image">
+            <div class="floating-card" id="floatingCard">
+                <h3>Hello!</h3>
+                <p>I create amazing web experiences</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="skills">
+                <h3>Skills</h3>
+                <div class="skill-bar">
+                    <span>HTML/CSS</span>
+                    <div class="bar-container">
+                        <div class="bar html-css"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <span>JavaScript</span>
+                    <div class="bar-container">
+                        <div class="bar javascript"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <span>React</span>
+                    <div class="bar-container">
+                        <div class="bar react"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>My GitHub Projects</h2>
+        <div class="projects-container" id="projectsContainer">
+            <!-- GitHub projects will be loaded here by JavaScript -->
+            <div class="loading">Loading projects...</div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
