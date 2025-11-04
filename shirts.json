@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "team": "Manchester United",
+        "league": "premier",
+        "season": "2020/21",
+        "mainColor": "#DA291C",
+        "secondaryColor": "#000000",
+        "image": "manutd-2023.jpg",
+    },
+    {
+        "id": 2,
+        "team": "Real Madrid",
+        "league": "laliga",
+        "season": "2011/12",
+        "mainColor": "#FFFFFF",
+        "secondaryColor": "#004170",
+        "image": "realmadrid-2022.jpg",
+    },
+    
+]
