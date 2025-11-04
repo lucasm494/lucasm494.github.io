@@ -6,7 +6,7 @@
         "season": "2020/21",
         "mainColor": "#DA291C",
         "secondaryColor": "#000000",
-        "image": "manutd-2023.jpg",
+        "image": "manutd-2020.jpg",
     },
     {
         "id": 2,
@@ -15,7 +15,7 @@
         "season": "2011/12",
         "mainColor": "#FFFFFF",
         "secondaryColor": "#004170",
-        "image": "realmadrid-2022.jpg",
+        "image": "realmadrid-2011.jpg",
     },
     
 ]
