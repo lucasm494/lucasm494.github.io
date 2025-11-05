@@ -4,15 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Shirt Collection</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet">
+    <script src="dark-mode.js" defer></script>
+    <script src="promises.js" defer></script>
+    <script src="shirt-loader.js" defer></script>
+    <script src="scroll-shortcuts.js" defer></script>
 </head>
 <body>
+    <nav>⚙</nav>
+    
+    <!-- Adicione esta seção de atalhos -->
+    <div class="shortcuts-bar">
+        <div class="container">
+            <div class="shortcuts">
+                <button class="shortcut-btn" data-target="collection">📋 Collection</button>
+                <button class="shortcut-btn" data-target="speedy">⚽ Cats XI</button>
+                <button class="shortcut-btn scroll-top">⬆️ Top</button>
+                <button class="shortcut-btn scroll-bottom">⬇️ Bottom</button>
+            </div>
+        </div>
+    </div>
+
     <header>
-        <h1>This is my Shirt Collection</h1>
-        <p>Personal football jersey archive</p>
+        <h1>My Shirt Collection</h1>
     </header>
 
-    <div class="container">
+    <section class="collection">
         <div class="controls">
             <input type="text" id="search" placeholder="Search my collection...">
             <button class="filter-btn active" data-filter="all">All</button>
@@ -20,16 +37,31 @@
             <button class="filter-btn" data-filter="premier">Premier League</button>
             <button class="filter-btn" data-filter="laliga">La Liga</button>
         </div>
-
-        <div class="shirts-grid" id="shirts-container">
-            <div class="loading">Loading collection...</div>
+        <div class="shirts-grid">
+            Loading collection...
         </div>
-    </div>
+    </section>
+
+    <section class="speedy">
+        <h3 class="field-title">Starting Lineup</h3>
+        <div class="formation-controls">
+            <label for="formation-select">Choose Formation:</label>
+            <select id="formation-select">
+                <option value="4-3-3">4-3-3 (Attacking)</option>
+                <option value="4-4-2">4-4-2 (Balanced)</option>
+                <option value="4-2-3-1">4-2-3-1 (Defensive)</option>
+                <option value="3-5-2">3-5-2 (Wing Play)</option>
+                <option value="5-3-2">5-3-2 (Ultra Defensive)</option>
+            </select>
+        </div>
+        <div class="formation-display">Formation: 4-3-3</div>
+        <div class="field-container">
+            <!-- Field will be populated by JavaScript -->
+        </div>
+    </section>
 
     <footer>
         <p>My Personal Collection © 2025</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>

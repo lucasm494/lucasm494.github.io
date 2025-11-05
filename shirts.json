@@ -16,6 +16,33 @@
         "mainColor": "#FFFFFF",
         "secondaryColor": "#004170",
         "image": "realmadrid-2011.jpg"
+    },
+    {
+        "id": 3,
+        "team": "Juventus",
+        "league": "seriea",
+        "season": "2019/20",
+        "mainColor": "#FFFFFF",
+        "secondaryColor": "#000000",
+        "image": "juventus-2019.jpg"
+    },
+    {
+        "id": 4,
+        "team": "Liverpool",
+        "league": "premier",
+        "season": "2018/19",
+        "mainColor": "#C8102E",
+        "secondaryColor": "#00A398",
+        "image": "liverpool-2018.jpg"
+    },
+    {
+        "id": 5,
+        "team": "Barcelona",
+        "league": "laliga",
+        "season": "2015/16",
+        "mainColor": "#A50044",
+        "secondaryColor": "#004D98",
+        "image": "barcelona-2015.jpg"
     }
     
 ]
