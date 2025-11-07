@@ -612,6 +612,26 @@ nav:hover {
     box-shadow: 0 4px 12px rgba(255, 165, 0, 0.3);
 }
 
+/* Floating animation for cat players */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.cat-player {
+    animation: float 3s ease-in-out infinite;
+}
+
+
+/* Ensure the hover effect still works and overrides the animation */
+.cat-player:hover {
+    animation-play-state: paused;
+    transform: scale(1.1) translateY(-5px) !important;
+}
 
 @keyframes fadeIn {
     from { 
