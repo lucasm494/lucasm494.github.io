@@ -625,7 +625,6 @@ nav:hover {
     box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
-/* Floating animation for cat players */
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
