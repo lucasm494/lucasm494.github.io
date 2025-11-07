@@ -626,8 +626,6 @@ nav:hover {
     animation: float 3s ease-in-out infinite;
 }
 
-
-/* Ensure the hover effect still works and overrides the animation */
 .cat-player:hover {
     animation-play-state: paused;
     transform: scale(1.1) translateY(-5px) !important;
