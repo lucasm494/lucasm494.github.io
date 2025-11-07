@@ -138,6 +138,56 @@ h1::after {
     transition: left 0.5s;
 }
 
+[data-filter="all"]:hover {
+    background: linear-gradient(135deg, #D2691E, #FF8C00);
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.3);
+}
+
+[data-filter="betclic"]:hover {
+    background: linear-gradient(135deg, #b20000f2, #ff2a2a);
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.3);
+}
+
+[data-filter="premier"]:hover {
+    background: linear-gradient(135deg, #6200b2f2, #9f2aff);
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.3);
+}
+
+[data-filter="laliga"]:hover {
+    background: linear-gradient(135deg, #ff615cf2, #ff4b4b);
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.3);
+}
+
+[data-filter="international"]:hover {
+    background: linear-gradient(135deg, #1E90FF, #00BFFF);
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.3);
+}
+
+[data-filter="all"].active {
+    background: linear-gradient(135deg, #D2691E, #FF8C00);
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.3);
+}
+
+[data-filter="betclic"].active {
+    background: linear-gradient(135deg, #b20000f2, #ff2a2a);
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.3);
+}
+
+[data-filter="premier"].active {
+    background: linear-gradient(135deg, #6200b2f2, #9f2aff);
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.3);
+}
+
+[data-filter="laliga"].active {
+    background: linear-gradient(135deg, #ff615cf2, #ff4b4b);
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.3);
+}
+
+[data-filter="international"].active {
+    background: linear-gradient(135deg, #1E90FF, #00BFFF);
+    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.3);
+}
+
 .filter-btn:hover::before {
     left: 100%;
 }
@@ -145,11 +195,6 @@ h1::after {
 .filter-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(139, 69, 19, 0.4);
-}
-
-.filter-btn.active {
-    background: linear-gradient(135deg, #8B4513, #D2691E);
-    box-shadow: 0 4px 8px rgba(210, 105, 30, 0.4);
 }
 
 .shirts-grid {

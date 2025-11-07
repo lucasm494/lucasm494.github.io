@@ -1,8 +1,7 @@
-// cat-loader.js - Handles loading cat images as football players with formation selector
 document.addEventListener('DOMContentLoaded', function() {
-    let currentCats = []; // Store loaded cats
+    let currentCats = []; 
     
-    // Define different formations with their grid positions
+    
     const formations = {
         '4-3-3': [
             { number: 1, label: 'GK', gridArea: '4 / 3' },
@@ -78,11 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function loadCats() {
         try {
-            // Load 11 cats for the starting lineup
+            
             const catPromises = Array.from({ length: 11 }, () => getCat());
             currentCats = await Promise.all(catPromises);
             
-            // Render with default formation
+            
             renderFormation('4-3-3');
             
         } catch (error) {
@@ -97,13 +96,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const fieldContainer = document.querySelector('.field-container');
         const formationDisplay = document.querySelector('.formation-display');
         
-        // Update formation display
+        
         formationDisplay.textContent = `Formation: ${formationName}`;
         
-        // Clear existing field
+        
         fieldContainer.innerHTML = '';
         
-        // Create positions for the selected formation
+        
         formation.forEach((position, index) => {
             const positionElement = document.createElement('div');
             positionElement.className = 'position';

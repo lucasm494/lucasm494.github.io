@@ -1,4 +1,3 @@
-// shirt-loader.js - Handles loading and displaying football shirts
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search');
     const filterButtons = document.querySelectorAll('.filter-btn');

@@ -1,14 +1,10 @@
-// scroll-shortcuts.js - Handles scroll navigation and shortcuts
 document.addEventListener('DOMContentLoaded', function() {
-    // Create shortcuts bar
     createShortcutsBar();
-    
-    // Setup shortcut buttons
     setupShortcutButtons();
 });
 
 function createShortcutsBar() {
-    // The bar is already in HTML, just ensure it's styled
+    
 }
 
 function setupShortcutButtons() {

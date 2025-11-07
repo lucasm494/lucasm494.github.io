@@ -1,48 +1,146 @@
 [
     {
         "id": 1,
-        "team": "Manchester United",
+        "team": "Manchester United FC",
         "league": "premier",
-        "season": "2020/21",
+        "season": "20/21",
         "mainColor": "#DA291C",
         "secondaryColor": "#000000",
-        "image": "manutd-2020.jpg"
+        "image": "manutd-20_21.png"
     },
     {
         "id": 2,
-        "team": "Real Madrid",
+        "team": "Real Madrid CF",
         "league": "laliga",
-        "season": "2011/12",
+        "season": "11/12",
         "mainColor": "#FFFFFF",
         "secondaryColor": "#004170",
-        "image": "realmadrid-2011.jpg"
+        "image": "realmadrid-11_12.png"
     },
     {
         "id": 3,
-        "team": "Juventus",
-        "league": "seriea",
-        "season": "2019/20",
-        "mainColor": "#FFFFFF",
-        "secondaryColor": "#000000",
-        "image": "juventus-2019.jpg"
+        "team": "AEFCT",
+        "league": "",
+        "season": "24/25",
+        "mainColor": "#2b2c2b",
+        "secondaryColor": "#c0d060",
+        "image": "aefct-24_25.png"
     },
     {
         "id": 4,
-        "team": "Liverpool",
-        "league": "premier",
-        "season": "2018/19",
-        "mainColor": "#C8102E",
-        "secondaryColor": "#00A398",
-        "image": "liverpool-2018.jpg"
+        "team": "Bayern Munich (3rd)",
+        "league": "bundesliga",
+        "season": "24/25",
+        "mainColor": "#a39c94",
+        "secondaryColor": "#891a10",
+        "image": "bayernmun3rd-24_25.png"
     },
     {
         "id": 5,
-        "team": "Barcelona",
+        "team": "Chelsea (2nd)",
+        "league": "premier",
+        "season": "22/23",
+        "mainColor":"#b2aca8",
+        "secondaryColor": "#307182",
+        "image": "chelsea2nd-22_23.png"
+    },
+    {
+        "id": 6,
+        "team": "Juárez",
+        "league": "",
+        "season": "21/22",
+        "mainColor": "#a5a4a3",
+        "secondaryColor": "#446b30",
+        "image": "juarez-21_22.png"
+    },
+    {
+        "id": 7,
+        "team": "Manchester United FC (2nd)",
+        "league": "premier",
+        "season": "23/24",
+        "mainColor": "#a49b92",
+        "secondaryColor": "#4f1d1b",
+        "image": "manutd-23_24.png"
+    },
+    {
+        "id": 8,
+        "team": "Monaco",
+        "league": "",
+        "season": "16/17",
+        "mainColor": "#bdb8b7",
+        "secondaryColor": "#8f251e",
+        "image": "monaco-16_17.png"
+    },
+    {
+        "id": 9,
+        "team": "Morocco",
+        "league": "international",
+        "season": "24/25",
+        "mainColor": "#cd260f",
+        "secondaryColor": "#0e8956",
+        "image": "morocco-24_25.png"
+    },
+    {
+        "id": 10,
+        "team": "Portugal",
+        "league": "international",
+        "season": "24/25",
+        "mainColor": "#ce3003",
+        "secondaryColor": "#d4cdc2",
+        "image": "portugal-24_25.png"
+    },
+    {
+        "id": 11,
+        "team": "Real Madrid CF(2nd)",
         "league": "laliga",
-        "season": "2015/16",
-        "mainColor": "#A50044",
-        "secondaryColor": "#004D98",
-        "image": "barcelona-2015.jpg"
+        "season": "24/25",
+        "mainColor": "#d37603",
+        "secondaryColor": "#25201d",
+        "image": "real2nd-24_25.png"
+    },
+    {
+        "id": 12,
+        "team": "Sporting CP",
+        "league": "betclic",
+        "season": "19/20",
+        "mainColor": "#0d4b21",
+        "secondaryColor": "#d4d0cd",
+        "image": "sporting-19_20.png"
+    },
+    {
+        "id": 13,
+        "team": "Sporting CP",
+        "league": "betclic",
+        "season": "25/26",
+        "mainColor": "#e0dddb",
+        "secondaryColor": "#0d5124",
+        "image": "sporting-25_26.png"
+    },
+    {
+        "id": 14,
+        "team": "Sporting CP (2nd)",
+        "league": "betclic",
+        "season": "24/25",
+        "mainColor": "#a6a09a",
+        "secondaryColor": "#183926",
+        "image": "sporting2nd-24_25.png"
+    },
+    {
+        "id": 15,
+        "team": "Sporting CP (3rd)",
+        "league": "betclic",
+        "season": "23/24",
+        "mainColor": "#232323",
+        "secondaryColor": "#dac491",
+        "image": "sporting3rd-23_24.png"
+    },
+    {
+        "id": 16,
+        "team": "Vitória FC",
+        "league": "",
+        "season": "17/18",
+        "mainColor":"#13502e",
+        "secondaryColor": "#c7c6c9",
+        "image": "vfc-17_18.png"
     }
-    
 ]
